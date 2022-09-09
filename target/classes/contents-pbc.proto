@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package ecommerce.services.pbc.content.api;
+
+option csharp_namespace = "Ashley.eCommerce.Services.PBC.Content.Grpc";
+
+service ContentPbcApiService {
+  rpc GetContentByQuery (GetContentByQueryRequest) returns (GetContentByQueryResponse);
+  rpc GetContentByFragment (GetContentByFragmentRequest) returns (GetContentByFragmentResponse);
+  rpc GetContentById (GetContentByIdRequest) returns (GetContentByIdResponse);
+}
+
+message GetContentByQueryRequest {
+  string query = 1;
+  string slug = 2;
+  string stage = 3;
+}
+
+message GetContentByQueryResponse {
+  Content content = 1;
+}
+
+message GetContentByFragmentRequest {
+  string componentName = 1;
+  string slug = 2;
+  string stage = 3;
+}
+
+message GetContentByFragmentResponse {
+  Content content = 1;
+}
+
+message GetContentByIdRequest {
+  string componentName = 1;
+  string id = 2;
+  string stage = 3;
+}
+
+message GetContentByIdResponse {
+  Content content = 1;
+}
+
+
+message Content {
+  string data = 1;
+  string error = 2;
+}
